@@ -1,12 +1,15 @@
 [global]
-name=zbd-seq-read
-rw=read
+name=zbd-rand-write
+group_reporting
+rw=randwrite
+zonemode=zbd
+zonesize=67108864
+max_open_zones=512
 bs=4096
 direct=1
 numjobs=1
-zonemode=zbd
-zonesize=67108864
-read_beyond_wp=0
+time_based
+runtime=180
 norandommap=1
 
 [dev1]
@@ -14,6 +17,3 @@ filename=Nvme0n1
 ioengine=/home/znsvm/spdk/build/fio/spdk_bdev
 spdk_json_conf=/home/znsvm/spdk_zns_fio/bdev/bdev.json
 thread=1
-offset=0
-size=32G
-iodepth=128
